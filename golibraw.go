@@ -61,7 +61,6 @@ func goResult(result C.int) error {
 		return nil
 	}
 	p := C.libraw_strerror(result)
-	defer C.free(unsafe.Pointer(p))
 	return fmt.Errorf("libraw error: %v", C.GoString(p))
 }
 
@@ -93,7 +92,7 @@ func ExtractThumbnail(inputPath string, exportPath string) error {
 	}
 
 	if err := goResult(C.libraw_dcraw_thumb_writer(librawProcessor, C.CString(exportPath))); err != nil {
-		return fmt.Errorf("unpacking thumbnal from RAW failed with [%v]", err)
+		return fmt.Errorf("writing thumbnail failed with [%v]", err)
 	}
 
 	return nil
