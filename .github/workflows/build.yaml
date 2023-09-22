@@ -1,4 +1,4 @@
-name: github.com/inokone/photostorage
+name: github.com/inokone/golibraw
 
 on: [push]
 
