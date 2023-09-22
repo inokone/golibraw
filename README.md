@@ -24,7 +24,7 @@ import (
 )
 
 func main() {
-    path := "~/Downloads/example.cr2"
+    path := "/Downloads/example.cr2"
 
     // Get metadata from the RAW image on Camera, Lens and Settings - fast operation
     metadata, err := raw.ExtractMetadata(path)
@@ -34,7 +34,7 @@ func main() {
     fmt.Println("Metadata: ", metadata)
 
     // Get the embedded thumbnail from RAW if exists - fast operation
-    err = raw.ExtractThumbnail(path, "~/Downloads/out.jpeg")
+    err = raw.ExtractThumbnail(path, "/Downloads/out.jpeg")
     if err != nil {
         fmt.Println("Error while extracting embedded thumbnail, maybe it is not present: ", err)
     }
