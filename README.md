@@ -19,7 +19,7 @@ go install github.com/inokone/golibraw@latest
 import (
     "bytes"
     "fmt"
-    "jpeg"
+    "image/jpeg"
     raw "github.com/inokone/golibraw"
 )
 
