@@ -1,7 +1,7 @@
 package golibraw
 
 // #cgo LDFLAGS: -lraw
-// #include "libraw/libraw.h"
+// #include <libraw/libraw.h>
 import "C"
 import (
 	"bytes"
@@ -15,7 +15,6 @@ import (
 	"github.com/lmittmann/ppm"
 )
 
-// ImgMetadata contiene alcuni dati relativi all'immagine letti da libraw
 type ImgMetadata struct {
 	ScattoTimestamp int64
 	ScattoDataOra   string
@@ -45,7 +44,6 @@ func lrInit() *C.libraw_data_t {
 	return librawProcessor
 }
 
-// ExportEmbeddedJPEG immagine JPEG salvata in file RAW
 func ExportEmbeddedJPEG(inputPath string, inputfile os.FileInfo, exportPath string) (string, error) {
 
 	outfile := exportPath + "/" + inputfile.Name() + "_embedded.jpg"

@@ -1,0 +1,29 @@
+name: github.com/inokone/photostorage
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get -y install libraw-dev
+          go install github.com/go-critic/go-critic/cmd/gocritic@latest
+
+      - name: Build
+        run: go build -v golibraw.go
+
+      - name: Test
+        run: go test -v ./...
+
+      - name: Static Code Analysis
+        run: gocritic check ./...
