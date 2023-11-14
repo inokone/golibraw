@@ -1,3 +1,5 @@
+// go:build (darwin && cgo) || linux
+
 package golibraw
 
 // #cgo LDFLAGS: -lraw
